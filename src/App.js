@@ -3,9 +3,22 @@ import AddTask from "./AddTask";
 import "./App.css";
 
 class App extends Component {
-  state = {};
+  state = {
+    taskName: "",
+    priority: false,
+    date: "",
+  };
+  handleChange = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+    console.log(value);
+
+    if (name === "taskName") this.setState({ [name]: value });
+    if (name === "priority") this.setState({ [name]: !this.state.priority });
+    if (name === "date") this.setState({ [name]: value });
+  };
   render() {
-    return <AddTask />;
+    return <AddTask change={this.handleChange} state={this.state} />;
   }
 }
 export default App;
