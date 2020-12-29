@@ -1,0 +1,13 @@
+.addSection {
+  width: 70%;
+  margin: 5% auto;
+  text-align: center;
+}
+.addSection label {
+  display: block;
+  margin-bottom: 1%;
+}
+.addSection button {
+  display: inline-block;
+  text-align: center;
+}
