@@ -6,15 +6,29 @@ import "./App.css";
 
 class App extends Component {
   state = {
+    toDoTasks: [],
+    doneTasks: [],
     correct: true,
     id: 0,
     taskName: "",
     priority: false,
     date: "",
   };
-  toDoTasks = [];
-  doneTasks = [];
 
+  handleAddToDoneClick = (e) => {
+    const toDoTasks = [...this.state.toDoTasks];
+    let doneTasks = [...this.state.doneTasks];
+    let index = toDoTasks.findIndex(
+      (elem) => parseInt(elem.id) === e.target.id
+    );
+    let task = toDoTasks.splice(index, 1);
+
+    doneTasks = doneTasks.concat(task);
+    this.setState({
+      toDoTasks,
+      doneTasks,
+    });
+  };
   handleChange = (e) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -34,15 +48,15 @@ class App extends Component {
       date: currState.date,
       priority: currState.priority,
     };
-    this.toDoTasks.push(task);
+
     this.setState({
+      toDoTasks: this.state.toDoTasks.concat(task),
       correct: true,
       id: this.state.id + 1,
       taskName: "",
       priority: false,
       date: this.currDate,
     });
-    console.log(this.toDoTasks);
   };
   componentDidMount() {
     let currentDate = new Date();
@@ -52,10 +66,14 @@ class App extends Component {
     });
   }
   render() {
-    const toDoTasks = this.toDoTasks.map((task) => (
-      <ToDo task={task} key={task.id} />
+    console.log(this.state.toDoTasks);
+
+    const doTasksArr = [...this.state.toDoTasks];
+    const doneTasksArr = [...this.state.doneTasks];
+    const toDoTasks = doTasksArr.map((task) => (
+      <ToDo task={task} key={task.id} clickDone={this.handleAddToDoneClick} />
     ));
-    const doneTasks = this.doneTasks.map((task) => (
+    const doneTasks = doneTasksArr.map((task) => (
       <Done task={task} key={task.id} />
     ));
     return (
@@ -70,7 +88,7 @@ class App extends Component {
         {toDoTasks}
         <hr />
         <h1>Zrobione</h1>
-        {toDoTasks}
+        {doneTasks}
       </>
     );
   }

@@ -1,8 +1,7 @@
 import React from "react";
 
 const ToDo = (props) => {
-  const { name, date, priority } = props.task;
-  console.log(name);
+  const { name, date, priority, id } = props.task;
 
   return (
     <>
@@ -10,7 +9,9 @@ const ToDo = (props) => {
         <p className={priority ? "red" : ""}>
           {name} zrobić do: {date}
         </p>
-        <button>Zrobione</button>
+        <button id={id} onClick={props.clickDone}>
+          Zrobione
+        </button>
         <button>X</button>
       </div>
     </>
