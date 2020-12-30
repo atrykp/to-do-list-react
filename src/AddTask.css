@@ -11,3 +11,11 @@
   display: inline-block;
   text-align: center;
 }
+.addSection p {
+  color: red;
+  font-size: 10px;
+  margin-top: 0;
+}
+.red {
+  color: red;
+}

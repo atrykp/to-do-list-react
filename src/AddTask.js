@@ -11,13 +11,14 @@ const AddTask = ({ change, state, submit }) => {
         onChange={change}
         value={state.taskName}
       />
+      {!state.correct && <p>Wypełnij pole żeby dodać zadanie</p>}
       <label htmlFor="priority">
         <input
           name="priority"
           type="checkbox"
           id="priority"
           onChange={change}
-          checked={state.prority}
+          checked={state.priority}
         />
         oznacz jako priorytet
       </label>
