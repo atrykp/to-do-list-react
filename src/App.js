@@ -17,6 +17,12 @@ class App extends Component {
     if (name === "priority") this.setState({ [name]: !this.state.priority });
     if (name === "date") this.setState({ [name]: value });
   };
+  componentDidMount() {
+    this.currentDate = new Date();
+    this.setState({
+      date: `${this.currentDate.getFullYear()}-${this.currentDate.getMonth()}-${this.currentDate.getUTCDate()}`,
+    });
+  }
   render() {
     return <AddTask change={this.handleChange} state={this.state} />;
   }
