@@ -8,6 +8,8 @@ class App extends Component {
     priority: false,
     date: "",
   };
+  toDoTasks = [];
+  doneTasks = [];
   handleChange = (e) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -17,6 +19,10 @@ class App extends Component {
     if (name === "priority") this.setState({ [name]: !this.state.priority });
     if (name === "date") this.setState({ [name]: value });
   };
+  handleAddTask = (e) => {
+    e.preventDefault();
+    console.log("działam");
+  };
   componentDidMount() {
     this.currentDate = new Date();
     this.setState({
@@ -24,7 +30,13 @@ class App extends Component {
     });
   }
   render() {
-    return <AddTask change={this.handleChange} state={this.state} />;
+    return (
+      <AddTask
+        change={this.handleChange}
+        submit={this.handleAddTask}
+        state={this.state}
+      />
+    );
   }
 }
 export default App;

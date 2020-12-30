@@ -1,9 +1,9 @@
 import React from "react";
 import "./AddTask.css";
 
-const AddTask = ({ change, state }) => {
+const AddTask = ({ change, state, submit }) => {
   return (
-    <form className="addSection" action="">
+    <form className="addSection" action="" onSubmit={submit}>
       <input
         type="text"
         name="taskName"
