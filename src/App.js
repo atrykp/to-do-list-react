@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AddTask from "./AddTask";
 import ToDo from "./ToDo";
+import Done from "./Done";
 import "./App.css";
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
   };
   toDoTasks = [];
   doneTasks = [];
+
   handleChange = (e) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -53,6 +55,9 @@ class App extends Component {
     const toDoTasks = this.toDoTasks.map((task) => (
       <ToDo task={task} key={task.id} />
     ));
+    const doneTasks = this.doneTasks.map((task) => (
+      <Done task={task} key={task.id} />
+    ));
     return (
       <>
         <AddTask
@@ -62,6 +67,9 @@ class App extends Component {
         />
         <hr />
         <h1>Do zrobienia</h1>
+        {toDoTasks}
+        <hr />
+        <h1>Zrobione</h1>
         {toDoTasks}
       </>
     );
