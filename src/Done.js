@@ -1,15 +1,15 @@
 import React from "react";
 
 const Done = (props) => {
-  const { name, date, priority } = props.task;
+  const { name, date, id } = props.task;
 
   return (
     <>
       <div className="task">
-        <p className={priority ? "red" : ""}>
+        <p>
           {name} zrobić do: {date}
         </p>
-        <button>X</button>
+        <button onClick={props.clickRemove.bind(this, id, false)}>X</button>
       </div>
     </>
   );

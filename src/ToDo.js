@@ -9,10 +9,8 @@ const ToDo = (props) => {
         <p className={priority ? "red" : ""}>
           {name} zrobić do: {date}
         </p>
-        <button id={id} onClick={props.clickDone}>
-          Zrobione
-        </button>
-        <button>X</button>
+        <button onClick={props.clickDone.bind(this, id)}>Zrobione</button>
+        <button onClick={props.clickRemove.bind(this, id, true)}>X</button>
       </div>
     </>
   );

@@ -14,15 +14,25 @@ class App extends Component {
     priority: false,
     date: "",
   };
+  removeTask = (number, status) => {
+    if (status) {
+      const toDoTasks = [...this.state.toDoTasks];
+      let index = toDoTasks.findIndex((elem) => number === elem.id);
+      toDoTasks.splice(index, 1);
+      this.setState({ toDoTasks });
+    } else if (!status) {
+      const doneTasks = [...this.state.doneTasks];
+      let index = doneTasks.findIndex((elem) => number === elem.id);
+      doneTasks.splice(index, 1);
+      this.setState({ doneTasks });
+    }
+  };
 
-  handleAddToDoneClick = (e) => {
+  handleAddToDoneClick = (number) => {
     const toDoTasks = [...this.state.toDoTasks];
     let doneTasks = [...this.state.doneTasks];
-    let index = toDoTasks.findIndex(
-      (elem) => parseInt(elem.id) === e.target.id
-    );
+    let index = toDoTasks.findIndex((elem) => number === elem.id);
     let task = toDoTasks.splice(index, 1);
-
     doneTasks = doneTasks.concat(task);
     this.setState({
       toDoTasks,
@@ -66,15 +76,18 @@ class App extends Component {
     });
   }
   render() {
-    console.log(this.state.toDoTasks);
-
     const doTasksArr = [...this.state.toDoTasks];
     const doneTasksArr = [...this.state.doneTasks];
     const toDoTasks = doTasksArr.map((task) => (
-      <ToDo task={task} key={task.id} clickDone={this.handleAddToDoneClick} />
+      <ToDo
+        task={task}
+        key={task.id}
+        clickDone={this.handleAddToDoneClick}
+        clickRemove={this.removeTask}
+      />
     ));
     const doneTasks = doneTasksArr.map((task) => (
-      <Done task={task} key={task.id} />
+      <Done task={task} key={task.id} clickRemove={this.removeTask} />
     ));
     return (
       <>
