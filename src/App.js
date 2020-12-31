@@ -53,7 +53,7 @@ class App extends Component {
   }
   handleAddTask = (e) => {
     e.preventDefault();
-    if (this.state.taskName.length < 1) {
+    if (!this.state.taskName || !this.state.date) {
       return this.setState({ correct: false });
     }
     const currState = this.state;
@@ -75,9 +75,6 @@ class App extends Component {
   };
   componentDidMount() {
     this.getDate();
-    this.setState({
-      date: this.currDate,
-    });
   }
   sortArr(arr) {
     arr.sort((a, b) => new Date(b.date) - new Date(a.date)).reverse();
