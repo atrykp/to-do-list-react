@@ -4,17 +4,40 @@
 }
 .task {
   width: 100%;
+  font-size: 15px;
+  border-bottom: 1px solid lightgray;
 }
 .task p {
+  padding-left: 3%;
+  color: rgb(104, 102, 100);
   display: inline-block;
   margin-right: 1%;
-  width: 40%;
+  width: 70%;
+  font-style: italic;
 }
 .task p span {
-  font-size: 25px;
+  font-style: normal;
+  display: inline-block;
+  width: 70%;
+  font-size: 30px;
   font-weight: bold;
-  margin-right: 0.5%;
 }
 .doneContainer {
   margin-bottom: 10vh;
+}
+hr {
+  margin-top: 3%;
+}
+.task button {
+  padding: 1% 2%;
+  margin-right: 2px;
+  text-transform: uppercase;
+  background-color: white;
+  border: 1px solid black;
+  cursor: pointer;
+}
+.task button:hover {
+  color: white;
+  background-color: black;
+  border: 1px solid white;
 }
