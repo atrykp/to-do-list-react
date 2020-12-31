@@ -14,15 +14,18 @@ class App extends Component {
     priority: false,
     date: "",
   };
+  findIndex(arr, number) {
+    return arr.findIndex((elem) => number === elem.id);
+  }
   removeTask = (number, status) => {
     if (status) {
       const toDoTasks = [...this.state.toDoTasks];
-      let index = toDoTasks.findIndex((elem) => number === elem.id);
+      let index = this.findIndex(toDoTasks, number);
       toDoTasks.splice(index, 1);
       this.setState({ toDoTasks });
     } else if (!status) {
       const doneTasks = [...this.state.doneTasks];
-      let index = doneTasks.findIndex((elem) => number === elem.id);
+      let index = this.findIndex(doneTasks, number);
       doneTasks.splice(index, 1);
       this.setState({ doneTasks });
     }
@@ -31,7 +34,7 @@ class App extends Component {
   handleAddToDoneClick = (number) => {
     const toDoTasks = [...this.state.toDoTasks];
     let doneTasks = [...this.state.doneTasks];
-    let index = toDoTasks.findIndex((elem) => number === elem.id);
+    let index = this.findIndex(toDoTasks, number);
     let task = toDoTasks.splice(index, 1);
     doneTasks = doneTasks.concat(task);
     this.setState({
@@ -70,7 +73,7 @@ class App extends Component {
       id: this.state.id + 1,
       taskName: "",
       priority: false,
-      date: this.currDate,
+      date: "",
     });
   };
   componentDidMount() {
