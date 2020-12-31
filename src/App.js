@@ -46,6 +46,10 @@ class App extends Component {
     if (name === "priority") this.setState({ [name]: !this.state.priority });
     if (name === "date") this.setState({ [name]: value });
   };
+  getDate() {
+    let currentDate = new Date();
+    return (this.currDate = `${currentDate.getFullYear()}-${currentDate.getMonth()}-${currentDate.getUTCDate()}`);
+  }
   handleAddTask = (e) => {
     e.preventDefault();
     if (this.state.taskName.length < 1) {
@@ -69,8 +73,7 @@ class App extends Component {
     });
   };
   componentDidMount() {
-    let currentDate = new Date();
-    this.currDate = `${currentDate.getFullYear()}-${currentDate.getMonth()}-${currentDate.getUTCDate()}`;
+    this.getDate();
     this.setState({
       date: this.currDate,
     });
@@ -87,7 +90,12 @@ class App extends Component {
       />
     ));
     const doneTasks = doneTasksArr.map((task) => (
-      <Done task={task} key={task.id} clickRemove={this.removeTask} />
+      <Done
+        task={task}
+        key={task.id}
+        clickRemove={this.removeTask}
+        date={this.currDate}
+      />
     ));
     return (
       <>
