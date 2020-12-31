@@ -48,7 +48,8 @@ class App extends Component {
   };
   getDate() {
     let currentDate = new Date();
-    return (this.currDate = `${currentDate.getFullYear()}-${currentDate.getMonth()}-${currentDate.getUTCDate()}`);
+    this.currDate = currentDate.toLocaleDateString();
+    // return (this.currDate = `${currentDate.getFullYear()}-${currentDate.getMonth()}-${currentDate.getUTCDate()}`);
   }
   handleAddTask = (e) => {
     e.preventDefault();
@@ -81,6 +82,8 @@ class App extends Component {
   render() {
     const doTasksArr = [...this.state.toDoTasks];
     const doneTasksArr = [...this.state.doneTasks];
+    doTasksArr.sort((a, b) => new Date(b.date) - new Date(a.date)).reverse();
+    doneTasksArr.sort((a, b) => new Date(b.date) - new Date(a.date)).reverse();
     const toDoTasks = doTasksArr.map((task) => (
       <ToDo
         task={task}
