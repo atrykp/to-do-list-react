@@ -79,11 +79,14 @@ class App extends Component {
       date: this.currDate,
     });
   }
+  sortArr(arr) {
+    arr.sort((a, b) => new Date(b.date) - new Date(a.date)).reverse();
+  }
   render() {
     const doTasksArr = [...this.state.toDoTasks];
     const doneTasksArr = [...this.state.doneTasks];
-    doTasksArr.sort((a, b) => new Date(b.date) - new Date(a.date)).reverse();
-    doneTasksArr.sort((a, b) => new Date(b.date) - new Date(a.date)).reverse();
+    this.sortArr(doTasksArr);
+    this.sortArr(doneTasksArr);
     const toDoTasks = doTasksArr.map((task) => (
       <ToDo
         task={task}
