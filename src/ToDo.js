@@ -7,7 +7,7 @@ const ToDo = (props) => {
     <>
       <div className="task">
         <p className={priority ? "red" : ""}>
-          {name} zrobić do: {date}
+          <span>{name}</span> zrobić do: {date}
         </p>
         <button onClick={props.clickDone.bind(this, id)}>Zrobione</button>
         <button onClick={props.clickRemove.bind(this, id, true)}>X</button>

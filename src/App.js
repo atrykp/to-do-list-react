@@ -49,7 +49,7 @@ class App extends Component {
   getDate() {
     let currentDate = new Date();
     this.currDate = currentDate.toLocaleDateString();
-    // return (this.currDate = `${currentDate.getFullYear()}-${currentDate.getMonth()}-${currentDate.getUTCDate()}`);
+    // this.currDate = `${currentDate.getFullYear()}-${currentDate.getMonth()}-${currentDate.getUTCDate()}`;
   }
   handleAddTask = (e) => {
     e.preventDefault();
@@ -108,11 +108,17 @@ class App extends Component {
           state={this.state}
         />
         <hr />
-        <h1>Do zrobienia</h1>
-        {toDoTasks}
+        <div className="toDoContainer">
+          <h1>Do zrobienia</h1>
+          {toDoTasks}
+        </div>
+
         <hr />
-        <h1>Zrobione</h1>
-        {doneTasks}
+        <div className="doneContainer">
+          {" "}
+          <h1>Zrobione</h1>
+          {doneTasks}
+        </div>
       </>
     );
   }

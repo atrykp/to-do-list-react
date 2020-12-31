@@ -1,1 +1,20 @@
-
+.toDoContainer,
+.doneContainer {
+  min-height: 30vh;
+}
+.task {
+  width: 100%;
+}
+.task p {
+  display: inline-block;
+  margin-right: 1%;
+  width: 40%;
+}
+.task p span {
+  font-size: 25px;
+  font-weight: bold;
+  margin-right: 0.5%;
+}
+.doneContainer {
+  margin-bottom: 10vh;
+}

@@ -7,7 +7,7 @@ const Done = (props) => {
     <>
       <div className="task">
         <p>
-          {name} Zrobione: {props.date}
+          <span>{name} </span> Zrobione: {props.date}
         </p>
         <button onClick={props.clickRemove.bind(this, id, false)}>X</button>
       </div>
