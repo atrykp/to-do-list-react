@@ -27,7 +27,9 @@ class App extends Component {
   handleAddToDoneClick = (number) => {
     const toDoTasks = [...this.state.toDoTasks];
     let index = this.findIndex(toDoTasks, number);
-    let task = toDoTasks.splice(index, 1);
+    let task = toDoTasks[index];
+    console.log(task);
+
     task.active = !task.active;
     this.setState({
       toDoTasks,
@@ -42,8 +44,7 @@ class App extends Component {
   };
   getDate() {
     let currentDate = new Date();
-    this.currDate = currentDate.toLocaleDateString();
-    // this.currDate = `${currentDate.getFullYear()}-${currentDate.getMonth()}-${currentDate.getUTCDate()}`;
+    this.currDate = currentDate.toUTCString();
   }
   handleAddTask = (e) => {
     e.preventDefault();
@@ -56,6 +57,7 @@ class App extends Component {
       name: currState.taskName,
       date: currState.date,
       priority: currState.priority,
+      active: currState.active,
     };
 
     this.setState({
@@ -74,14 +76,12 @@ class App extends Component {
     arr.sort((a, b) => new Date(b.date) - new Date(a.date)).reverse();
   }
   render() {
-    console.log("hejo");
+    let doTasksArr = [...this.state.toDoTasks];
+    doTasksArr = doTasksArr.filter((task) => task.active);
 
-    const doTasksArr = [...this.state.toDoTasks];
-    doTasksArr.filter((task) => task.active);
-    console.log(doTasksArr);
+    let doneTasksArr = [...this.state.toDoTasks];
+    doneTasksArr = doneTasksArr.filter((task) => !task.active);
 
-    const doneTasksArr = [...this.state.toDoTasks];
-    doTasksArr.filter((task) => task.active);
     this.sortArr(doTasksArr);
     this.sortArr(doneTasksArr);
     const toDoTasks = doTasksArr.map((task) => (
