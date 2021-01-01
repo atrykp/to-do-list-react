@@ -5,7 +5,7 @@ import "./App.css";
 
 class App extends Component {
   state = {
-    toDoTasks: [],
+    tasks: [],
     correct: true,
     id: 0,
     taskName: "",
@@ -18,22 +18,21 @@ class App extends Component {
     return arr.findIndex((elem) => number === elem.id);
   }
   removeTask = (number) => {
-    const toDoTasks = [...this.state.toDoTasks];
+    const toDoTasks = [...this.state.tasks];
     let index = this.findIndex(toDoTasks, number);
     toDoTasks.splice(index, 1);
-    this.setState({ toDoTasks });
+    this.setState({ tasks: toDoTasks });
   };
 
   handleAddToDoneClick = (number) => {
-    const toDoTasks = [...this.state.toDoTasks];
+    const toDoTasks = [...this.state.tasks];
     let index = this.findIndex(toDoTasks, number);
     let task = toDoTasks[index];
-    console.log(task);
 
     task.active = !task.active;
     task.doneDate = new Date().getTime();
     this.setState({
-      toDoTasks,
+      tasks: toDoTasks,
     });
   };
   handleChange = (e) => {
@@ -64,7 +63,7 @@ class App extends Component {
     };
 
     this.setState({
-      toDoTasks: this.state.toDoTasks.concat(task),
+      tasks: this.state.tasks.concat(task),
       correct: true,
       id: this.state.id + 1,
       taskName: "",
@@ -83,10 +82,10 @@ class App extends Component {
     arr.sort((a, b) => new Date(b.date) - new Date(a.date)).reverse();
   }
   render() {
-    let doTasksArr = [...this.state.toDoTasks];
+    let doTasksArr = [...this.state.tasks];
     doTasksArr = doTasksArr.filter((task) => task.active);
 
-    let doneTasksArr = [...this.state.toDoTasks];
+    let doneTasksArr = [...this.state.tasks];
     doneTasksArr = doneTasksArr.filter((task) => !task.active);
     doneTasksArr.sort((a, b) => b.doneDate - a.doneDate);
     this.sortArr(doTasksArr);

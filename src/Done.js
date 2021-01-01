@@ -2,6 +2,7 @@ import React from "react";
 
 const Done = (props) => {
   const { name, id, doneDate, date, priority } = props.task;
+
   if (props.done) {
     const time = new Date(doneDate).toLocaleString();
     return (
