@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import AddTask from "./AddTask";
-import ToDo from "./ToDo";
 import Done from "./Done";
 import "./App.css";
 
@@ -93,15 +92,21 @@ class App extends Component {
     this.sortArr(doTasksArr);
     this.sortArr(doneTasksArr);
     const toDoTasks = doTasksArr.map((task) => (
-      <ToDo
+      <Done
         task={task}
         key={task.id}
         clickDone={this.handleAddToDoneClick}
         clickRemove={this.removeTask}
+        done={false}
       />
     ));
     const doneTasks = doneTasksArr.map((task) => (
-      <Done task={task} key={task.id} clickRemove={this.removeTask} />
+      <Done
+        task={task}
+        key={task.id}
+        clickRemove={this.removeTask}
+        done={true}
+      />
     ));
     return (
       <>
