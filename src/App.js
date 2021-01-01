@@ -7,39 +7,30 @@ import "./App.css";
 class App extends Component {
   state = {
     toDoTasks: [],
-    doneTasks: [],
     correct: true,
     id: 0,
     taskName: "",
     priority: false,
     date: "",
+    active: true,
   };
   findIndex(arr, number) {
     return arr.findIndex((elem) => number === elem.id);
   }
-  removeTask = (number, status) => {
-    if (status) {
-      const toDoTasks = [...this.state.toDoTasks];
-      let index = this.findIndex(toDoTasks, number);
-      toDoTasks.splice(index, 1);
-      this.setState({ toDoTasks });
-    } else if (!status) {
-      const doneTasks = [...this.state.doneTasks];
-      let index = this.findIndex(doneTasks, number);
-      doneTasks.splice(index, 1);
-      this.setState({ doneTasks });
-    }
+  removeTask = (number) => {
+    const toDoTasks = [...this.state.toDoTasks];
+    let index = this.findIndex(toDoTasks, number);
+    toDoTasks.splice(index, 1);
+    this.setState({ toDoTasks });
   };
 
   handleAddToDoneClick = (number) => {
     const toDoTasks = [...this.state.toDoTasks];
-    let doneTasks = [...this.state.doneTasks];
     let index = this.findIndex(toDoTasks, number);
     let task = toDoTasks.splice(index, 1);
-    doneTasks = doneTasks.concat(task);
+    task.active = !task.active;
     this.setState({
       toDoTasks,
-      doneTasks,
     });
   };
   handleChange = (e) => {
@@ -83,8 +74,14 @@ class App extends Component {
     arr.sort((a, b) => new Date(b.date) - new Date(a.date)).reverse();
   }
   render() {
+    console.log("hejo");
+
     const doTasksArr = [...this.state.toDoTasks];
-    const doneTasksArr = [...this.state.doneTasks];
+    doTasksArr.filter((task) => task.active);
+    console.log(doTasksArr);
+
+    const doneTasksArr = [...this.state.toDoTasks];
+    doTasksArr.filter((task) => task.active);
     this.sortArr(doTasksArr);
     this.sortArr(doneTasksArr);
     const toDoTasks = doTasksArr.map((task) => (
