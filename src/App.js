@@ -88,9 +88,9 @@ class App extends Component {
 
     let doneTasksArr = [...this.state.toDoTasks];
     doneTasksArr = doneTasksArr.filter((task) => !task.active);
-
+    doneTasksArr.sort((a, b) => b.doneDate - a.doneDate);
     this.sortArr(doTasksArr);
-    this.sortArr(doneTasksArr);
+
     const toDoTasks = doTasksArr.map((task) => (
       <Done
         task={task}

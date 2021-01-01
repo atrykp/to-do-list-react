@@ -11,9 +11,7 @@ const AddTask = ({ change, state, submit }) => {
         onChange={change}
         value={state.taskName}
       />
-      {!state.correct && !state.taskName && (
-        <p>Wypełnij pole żeby dodać zadanie</p>
-      )}
+
       <label htmlFor="priority">
         <input
           name="priority"
@@ -24,10 +22,16 @@ const AddTask = ({ change, state, submit }) => {
         />
         oznacz jako priorytet
       </label>
+      {!state.correct && !state.taskName && (
+        <p>Wypełnij pole żeby dodać zadanie</p>
+      )}
+
+      <br />
 
       <span>Do kiedy zrobić</span>
       <input type="date" name="date" onChange={change} value={state.date} />
       {!state.correct && !state.date && <p>Podaj datę zadania</p>}
+      <br />
       <button>Dodaj</button>
     </form>
   );
