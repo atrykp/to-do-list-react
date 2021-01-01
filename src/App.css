@@ -16,11 +16,13 @@
   font-style: italic;
 }
 .task p span {
+  border-right: 1px solid lightgray;
   font-style: normal;
   display: inline-block;
   width: 70%;
   font-size: 30px;
   font-weight: bold;
+  margin-right: 3%;
 }
 .doneContainer {
   margin-bottom: 10vh;
@@ -35,9 +37,14 @@ hr {
   background-color: white;
   border: 1px solid black;
   cursor: pointer;
+  margin: 17px 0 17px 2px;
 }
 .task button:hover {
   color: white;
   background-color: black;
   border: 1px solid white;
+}
+
+.task .red span {
+  color: darkred;
 }
