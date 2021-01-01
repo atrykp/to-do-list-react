@@ -13,6 +13,7 @@ class App extends Component {
     priority: false,
     date: "",
     active: true,
+    doneDate: "",
   };
   findIndex(arr, number) {
     return arr.findIndex((elem) => number === elem.id);
@@ -31,6 +32,7 @@ class App extends Component {
     console.log(task);
 
     task.active = !task.active;
+    task.doneDate = new Date().getTime();
     this.setState({
       toDoTasks,
     });
@@ -43,8 +45,9 @@ class App extends Component {
     if (name === "date") this.setState({ [name]: value });
   };
   getDate() {
-    let currentDate = new Date();
-    this.currDate = currentDate.toUTCString();
+    let currentDate = new Date().toISOString();
+    let time = currentDate.slice(0, 10);
+    this.currDate = time;
   }
   handleAddTask = (e) => {
     e.preventDefault();
@@ -58,6 +61,7 @@ class App extends Component {
       date: currState.date,
       priority: currState.priority,
       active: currState.active,
+      doneDate: currState.doneDate,
     };
 
     this.setState({
@@ -66,11 +70,15 @@ class App extends Component {
       id: this.state.id + 1,
       taskName: "",
       priority: false,
-      date: "",
+      date: this.currDate,
+      doneDate: "",
     });
   };
   componentDidMount() {
     this.getDate();
+    this.setState({
+      date: this.currDate,
+    });
   }
   sortArr(arr) {
     arr.sort((a, b) => new Date(b.date) - new Date(a.date)).reverse();
@@ -93,12 +101,7 @@ class App extends Component {
       />
     ));
     const doneTasks = doneTasksArr.map((task) => (
-      <Done
-        task={task}
-        key={task.id}
-        clickRemove={this.removeTask}
-        date={this.currDate}
-      />
+      <Done task={task} key={task.id} clickRemove={this.removeTask} />
     ));
     return (
       <>
