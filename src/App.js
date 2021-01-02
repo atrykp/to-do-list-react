@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import AddTask from "./AddTask";
 import Task from "./Task";
 import "./App.css";
@@ -108,14 +109,29 @@ class App extends Component {
       />
     ));
     return (
-      <>
-        <AddTask
-          change={this.handleChange}
-          submit={this.handleAddTask}
-          state={this.state}
-        />
-        <hr />
-        <div className="toDoContainer">
+      <Router>
+        <div className="mainContainer">
+          <AddTask
+            change={this.handleChange}
+            submit={this.handleAddTask}
+            state={this.state}
+          />
+          <ul>
+            <li>
+              <NavLink exact to="/">
+                Do zrobienia({doTasksArr.length})
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/zrobione">Zrobione({doneTasksArr.length})</NavLink>
+            </li>
+          </ul>
+          <hr />
+          <Route path="/" exact>
+            {toDoTasks}
+          </Route>
+          <Route path="/zrobione">{doneTasks}</Route>
+          {/* <div className="toDoContainer">
           <h1>Do zrobienia ({doTasksArr.length})</h1>
           {toDoTasks}
         </div>
@@ -125,8 +141,9 @@ class App extends Component {
           {" "}
           <h1>Zrobione ({doneTasksArr.length})</h1>
           {doneTasks}
+        </div> */}
         </div>
-      </>
+      </Router>
     );
   }
 }
