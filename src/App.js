@@ -123,7 +123,7 @@ class App extends Component {
         <hr />
         <div className="doneContainer">
           {" "}
-          <h1>Zrobione ({doTasksArr.length})</h1>
+          <h1>Zrobione ({doneTasksArr.length})</h1>
           {doneTasks}
         </div>
       </>

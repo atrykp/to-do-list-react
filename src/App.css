@@ -48,3 +48,7 @@ hr {
 .task .red span {
   color: darkred;
 }
+.task .doneTask span {
+  font-size: 20px;
+  text-decoration: line-through;
+}

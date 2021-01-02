@@ -8,7 +8,7 @@ const Task = (props) => {
     return (
       <>
         <div className="task">
-          <p>
+          <p className="doneTask">
             <span>{name} </span> Zrobione: {time}
           </p>
           <button onClick={() => props.clickRemove(id)}>X</button>
