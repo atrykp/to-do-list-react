@@ -116,14 +116,14 @@ class App extends Component {
         />
         <hr />
         <div className="toDoContainer">
-          <h1>Do zrobienia</h1>
+          <h1>Do zrobienia ({doTasksArr.length})</h1>
           {toDoTasks}
         </div>
 
         <hr />
         <div className="doneContainer">
           {" "}
-          <h1>Zrobione</h1>
+          <h1>Zrobione ({doTasksArr.length})</h1>
           {doneTasks}
         </div>
       </>
