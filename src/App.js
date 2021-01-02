@@ -116,32 +116,25 @@ class App extends Component {
             submit={this.handleAddTask}
             state={this.state}
           />
-          <ul>
-            <li>
-              <NavLink exact to="/">
-                Do zrobienia({doTasksArr.length})
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/zrobione">Zrobione({doneTasksArr.length})</NavLink>
-            </li>
-          </ul>
+          <nav>
+            <ul className="clearfix">
+              <li>
+                <NavLink exact to="/">
+                  Do zrobienia ({doTasksArr.length})
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/zrobione">
+                  Zrobione ({doneTasksArr.length})
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
           <hr />
           <Route path="/" exact>
             {toDoTasks}
           </Route>
           <Route path="/zrobione">{doneTasks}</Route>
-          {/* <div className="toDoContainer">
-          <h1>Do zrobienia ({doTasksArr.length})</h1>
-          {toDoTasks}
-        </div>
-
-        <hr />
-        <div className="doneContainer">
-          {" "}
-          <h1>Zrobione ({doneTasksArr.length})</h1>
-          {doneTasks}
-        </div> */}
         </div>
       </Router>
     );
