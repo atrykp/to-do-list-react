@@ -7,14 +7,10 @@ import "../style/App.css";
 class App extends Component {
   state = {
     tasks: [],
-    correct: true,
-    id: 0,
-    taskName: "",
-    priority: false,
-    date: "",
-    active: true,
-    doneDate: "",
   };
+  addTaskToArr(task){
+    this.setState({tasks: this.state.tasks.concat(task)}),
+  }
   findIndex(arr, number) {
     return arr.findIndex((elem) => number === elem.id);
   }
@@ -36,43 +32,13 @@ class App extends Component {
       tasks: toDoTasks,
     });
   };
-  handleChange = (e) => {
-    let name = e.target.name;
-    let value = e.target.value;
-    if (name === "taskName") this.setState({ [name]: value });
-    if (name === "priority") this.setState({ [name]: !this.state.priority });
-    if (name === "date") this.setState({ [name]: value });
-  };
+
   getDate() {
     let currentDate = new Date().toISOString();
     let time = currentDate.slice(0, 10);
     this.currDate = time;
   }
-  handleAddTask = (e) => {
-    e.preventDefault();
-    if (!this.state.taskName || !this.state.date) {
-      return this.setState({ correct: false });
-    }
-    const currState = this.state;
-    const task = {
-      id: currState.id,
-      name: currState.taskName,
-      date: currState.date,
-      priority: currState.priority,
-      active: currState.active,
-      doneDate: currState.doneDate,
-    };
 
-    this.setState({
-      tasks: this.state.tasks.concat(task),
-      correct: true,
-      id: this.state.id + 1,
-      taskName: "",
-      priority: false,
-      date: this.currDate,
-      doneDate: "",
-    });
-  };
   componentDidMount() {
     this.getDate();
     this.setState({
@@ -112,9 +78,7 @@ class App extends Component {
       <Router>
         <div className="mainContainer">
           <AddTask
-            change={this.handleChange}
-            submit={this.handleAddTask}
-            state={this.state}
+            addTask={this.addTaskToArr}
           />
           <nav>
             <ul className="clearfix">
