@@ -1,6 +1,6 @@
 import React from "react";
 
-const Task = (props) => {
+const TasksList = (props) => {
   const { name, id, doneDate, date, priority } = props.task;
 
   if (props.done) {
@@ -30,4 +30,4 @@ const Task = (props) => {
   }
 };
 
-export default Task;
+export default TasksList;

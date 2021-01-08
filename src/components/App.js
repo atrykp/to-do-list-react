@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import AddTask from "./AddTask";
-import Task from "./Task";
-import "./App.css";
+import TasksList from "./TasksList";
+import "../style/App.css";
 
 class App extends Component {
   state = {
@@ -92,7 +92,7 @@ class App extends Component {
     this.sortArr(doTasksArr);
 
     const toDoTasks = doTasksArr.map((task) => (
-      <Task
+      <TasksList
         task={task}
         key={task.id}
         clickDone={this.handleAddToDoneClick}
@@ -101,7 +101,7 @@ class App extends Component {
       />
     ));
     const doneTasks = doneTasksArr.map((task) => (
-      <Task
+      <TasksList
         task={task}
         key={task.id}
         clickRemove={this.removeTask}
