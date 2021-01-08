@@ -18,28 +18,13 @@ class AddTask extends Component {
     if (name === "priority") this.setState({ [name]: !this.state.priority });
     if (name === "date") this.setState({ [name]: value });
   };
+
   handleAddTask = (e) => {
     e.preventDefault();
     if (!this.state.taskName || !this.state.date) {
       return this.setState({ correct: false });
     }
     const currState = this.state;
-    const task = {
-      id: currState.id,
-      name: currState.taskName,
-      date: currState.date,
-      priority: currState.priority,
-      active: currState.active,
-      doneDate: currState.doneDate,
-    };
-  };
-
-  handleAddTask = (e) => {
-    e.preventDefault();
-    if (!this.state.taskName || !this.state.date) {
-      return this.setState({ correct: false });
-    }
-
     const task = {
       id: currState.id,
       name: currState.taskName,
@@ -59,16 +44,28 @@ class AddTask extends Component {
       doneDate: "",
     });
   };
+  getDate() {
+    let currentDate = new Date().toISOString();
+    let time = currentDate.slice(0, 10);
+    this.currDate = time;
+  }
+
+  componentDidMount() {
+    this.getDate();
+    this.setState({
+      date: this.currDate,
+    });
+  }
 
   render() {
     return (
-      <form className="addSection" action="" onSubmit={submit}>
+      <form className="addSection" action="" onSubmit={this.handleAddTask}>
         <input
           type="text"
           name="taskName"
           placeholder="dodaj zadanie"
-          onChange={change}
-          value={state.taskName}
+          onChange={this.handleChange}
+          value={this.state.taskName}
         />
 
         <label htmlFor="priority">
@@ -76,20 +73,25 @@ class AddTask extends Component {
             name="priority"
             type="checkbox"
             id="priority"
-            onChange={change}
-            checked={state.priority}
+            onChange={this.handleChange}
+            checked={this.state.priority}
           />
           oznacz jako priorytet
         </label>
-        {!state.correct && !state.taskName && (
+        {!this.state.correct && !this.state.taskName && (
           <p>Wypełnij pole żeby dodać zadanie</p>
         )}
 
         <br />
 
         <span>Do kiedy zrobić</span>
-        <input type="date" name="date" onChange={change} value={state.date} />
-        {!state.correct && !state.date && <p>Podaj datę zadania</p>}
+        <input
+          type="date"
+          name="date"
+          onChange={this.handleChange}
+          value={this.state.date}
+        />
+        {!this.state.correct && !this.state.date && <p>Podaj datę zadania</p>}
         <br />
         <button>Dodaj</button>
       </form>

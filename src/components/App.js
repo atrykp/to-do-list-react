@@ -8,8 +8,8 @@ class App extends Component {
   state = {
     tasks: [],
   };
-  addTaskToArr(task){
-    this.setState({tasks: this.state.tasks.concat(task)}),
+  addTaskToArr(task) {
+    this.setState({ tasks: this.state.tasks.concat(task) });
   }
   findIndex(arr, number) {
     return arr.findIndex((elem) => number === elem.id);
@@ -33,18 +33,6 @@ class App extends Component {
     });
   };
 
-  getDate() {
-    let currentDate = new Date().toISOString();
-    let time = currentDate.slice(0, 10);
-    this.currDate = time;
-  }
-
-  componentDidMount() {
-    this.getDate();
-    this.setState({
-      date: this.currDate,
-    });
-  }
   sortArr(arr) {
     arr.sort((a, b) => new Date(b.date) - new Date(a.date)).reverse();
   }
@@ -77,9 +65,7 @@ class App extends Component {
     return (
       <Router>
         <div className="mainContainer">
-          <AddTask
-            addTask={this.addTaskToArr}
-          />
+          <AddTask addTask={this.addTaskToArr} />
           <nav>
             <ul className="clearfix">
               <li>
