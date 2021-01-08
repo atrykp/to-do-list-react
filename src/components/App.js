@@ -45,23 +45,9 @@ class App extends Component {
     doneTasksArr.sort((a, b) => b.doneDate - a.doneDate);
     this.sortArr(doTasksArr);
 
-    const toDoTasks = doTasksArr.map((task) => (
-      <TasksList
-        task={task}
-        key={task.id}
-        clickDone={this.handleAddToDoneClick}
-        clickRemove={this.removeTask}
-        done={false}
-      />
-    ));
-    const doneTasks = doneTasksArr.map((task) => (
-      <TasksList
-        task={task}
-        key={task.id}
-        clickRemove={this.removeTask}
-        done={true}
-      />
-    ));
+    const toDoTasks = <TasksList toDoArr={doTasksArr} />;
+    const doneTasks = <TasksList doneArr={doneTasksArr} />;
+
     return (
       <Router>
         <div className="mainContainer">
