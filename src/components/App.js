@@ -8,9 +8,9 @@ class App extends Component {
   state = {
     tasks: [],
   };
-  addTaskToArr(task) {
+  addTaskToArr = (task) => {
     this.setState({ tasks: this.state.tasks.concat(task) });
-  }
+  };
   findIndex(arr, number) {
     return arr.findIndex((elem) => number === elem.id);
   }
