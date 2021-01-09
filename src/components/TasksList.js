@@ -1,11 +1,7 @@
 import Task from "./Task";
 import React from "react";
 
-const TaskList = (props) => {
-  // --------------------tutuaj coś źle---------------------------
-
-  const { toDoArr, changeStatus, removeTask, doneArr, type } = props;
-
+const TaskList = ({ toDoArr, changeStatus, removeTask, doneArr, type }) => {
   if (type === "toDo") {
     const toDoTasks = toDoArr.map((task) => (
       <Task
