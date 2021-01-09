@@ -6,28 +6,24 @@ const TaskList = (props) => {
 
   const { toDoArr, changeStatus, removeTask, doneArr, type } = props;
 
-  const toDoTasks = toDoArr.map((task) => (
-    <Task
-      task={task}
-      key={task.id}
-      clickDone={changeStatus}
-      clickRemove={removeTask}
-      done={false}
-    />
-  ));
-  console.log(toDoTasks);
-
-  if (type === "done") {
-    const doneTasks = doneArr.map((task) => (
+  if (type === "toDo") {
+    const toDoTasks = toDoArr.map((task) => (
       <Task
         task={task}
         key={task.id}
-        clickRemove={this.removeTask}
-        done={true}
+        clickDone={changeStatus}
+        clickRemove={removeTask}
+        done={false}
       />
     ));
+    return toDoTasks;
   }
 
-  return toDoTasks;
+  if (type === "done") {
+    const doneTasks = doneArr.map((task) => (
+      <Task task={task} key={task.id} clickRemove={removeTask} done={true} />
+    ));
+    return doneTasks;
+  }
 };
 export default TaskList;

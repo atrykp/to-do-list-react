@@ -64,7 +64,7 @@ class App extends Component {
         <TasksList
           doneArr={doneTasksArr}
           removeTask={this.removeTask}
-          type={"Done"}
+          type={"done"}
         />
       );
     console.log(toDoTasks);
