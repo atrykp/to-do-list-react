@@ -1,7 +1,8 @@
-import Task from './Task'
-import React from 'react'
+import Task from "./Task";
+import React from "react";
 
-const TaskList =({toDoArr,doneArr})=>{
+const TaskList = ({ toDoArr, doneArr }) => {
+  // --------------------tutuaj coś źle---------------------------
   const toDoTasks = toDoArr.map((task) => (
     <Task
       task={task}
@@ -11,23 +12,12 @@ const TaskList =({toDoArr,doneArr})=>{
       done={false}
     />
   ));
+  console.log(toDoTasks);
+
   const doneTasks = doneArr.map((task) => (
-    <Task
-      task={task}
-      key={task.id}
-      clickRemove={this.removeTask}
-      done={true}
-    />
+    <Task task={task} key={task.id} clickRemove={this.removeTask} done={true} />
   ));
 
-
-return(
-
-
-
-
-)
-
-
-}
-export default TaskList
+  return { toDoTasks };
+};
+export default TaskList;

@@ -8,12 +8,15 @@ class App extends Component {
   state = {
     tasks: [],
   };
+
   addTaskToArr = (task) => {
     this.setState({ tasks: this.state.tasks.concat(task) });
   };
+
   findIndex(arr, number) {
     return arr.findIndex((elem) => number === elem.id);
   }
+
   removeTask = (number) => {
     const toDoTasks = [...this.state.tasks];
     let index = this.findIndex(toDoTasks, number);
@@ -44,9 +47,14 @@ class App extends Component {
     doneTasksArr = doneTasksArr.filter((task) => !task.active);
     doneTasksArr.sort((a, b) => b.doneDate - a.doneDate);
     this.sortArr(doTasksArr);
+    console.log(doTasksArr);
+    console.log(doneTasksArr);
 
-    const toDoTasks = <TasksList toDoArr={doTasksArr} />;
-    const doneTasks = <TasksList doneArr={doneTasksArr} />;
+    const toDoTasks =
+      !doTasksArr.length === 0 ? <TasksList toDoArr={doTasksArr} /> : null;
+    const doneTasks =
+      !doneTasksArr.length === 0 ? <TasksList doneArr={doneTasksArr} /> : null;
+    console.log(toDoTasks);
 
     return (
       <Router>
