@@ -58,6 +58,13 @@ class AddTask extends Component {
   }
 
   render() {
+    const alertName = !this.state.correct && !this.state.taskName && (
+      <p>Wypełnij pole żeby dodać zadanie</p>
+    );
+    const alertDate = !this.state.correct && !this.state.date && (
+      <p>Podaj datę zadania</p>
+    );
+
     return (
       <form className="addSection" action="" onSubmit={this.handleAddTask}>
         <input
@@ -78,9 +85,7 @@ class AddTask extends Component {
           />
           oznacz jako priorytet
         </label>
-        {!this.state.correct && !this.state.taskName && (
-          <p>Wypełnij pole żeby dodać zadanie</p>
-        )}
+        {alertName}
 
         <br />
 
@@ -91,7 +96,7 @@ class AddTask extends Component {
           onChange={this.handleChange}
           value={this.state.date}
         />
-        {!this.state.correct && !this.state.date && <p>Podaj datę zadania</p>}
+        {alertDate}
         <br />
         <button>Dodaj</button>
       </form>
