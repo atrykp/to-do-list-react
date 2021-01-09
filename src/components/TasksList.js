@@ -1,23 +1,33 @@
 import Task from "./Task";
 import React from "react";
 
-const TaskList = ({ toDoArr, doneArr }) => {
+const TaskList = (props) => {
   // --------------------tutuaj coś źle---------------------------
+
+  const { toDoArr, changeStatus, removeTask, doneArr, type } = props;
+
   const toDoTasks = toDoArr.map((task) => (
     <Task
       task={task}
       key={task.id}
-      clickDone={this.handleAddToDoneClick}
-      clickRemove={this.removeTask}
+      clickDone={changeStatus}
+      clickRemove={removeTask}
       done={false}
     />
   ));
   console.log(toDoTasks);
 
-  const doneTasks = doneArr.map((task) => (
-    <Task task={task} key={task.id} clickRemove={this.removeTask} done={true} />
-  ));
+  if (type === "done") {
+    const doneTasks = doneArr.map((task) => (
+      <Task
+        task={task}
+        key={task.id}
+        clickRemove={this.removeTask}
+        done={true}
+      />
+    ));
+  }
 
-  return { toDoTasks };
+  return toDoTasks;
 };
 export default TaskList;

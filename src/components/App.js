@@ -51,9 +51,22 @@ class App extends Component {
     console.log(doneTasksArr);
 
     const toDoTasks =
-      !doTasksArr.length === 0 ? <TasksList toDoArr={doTasksArr} /> : null;
+      doTasksArr.length === 0 ? null : (
+        <TasksList
+          toDoArr={doTasksArr}
+          changeStatus={this.handleAddToDoneClick}
+          removeTask={this.removeTask}
+          type={"toDo"}
+        />
+      );
     const doneTasks =
-      !doneTasksArr.length === 0 ? <TasksList doneArr={doneTasksArr} /> : null;
+      doneTasksArr.length === 0 ? null : (
+        <TasksList
+          doneArr={doneTasksArr}
+          removeTask={this.removeTask}
+          type={"Done"}
+        />
+      );
     console.log(toDoTasks);
 
     return (
