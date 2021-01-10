@@ -1,5 +1,7 @@
-import React, { Component, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../style/AddTask.css";
+
+let currDate = "";
 
 const AddTask = (props) => {
   const [correct, setCorrect] = useState(true);
@@ -7,7 +9,6 @@ const AddTask = (props) => {
   const [taskName, setTaskName] = useState("");
   const [priority, setPriority] = useState(false);
   const [date, setDate] = useState("");
-  const [active, setActive] = useState(true);
 
   const handleChange = (e) => {
     let name = e.target.name;
@@ -28,7 +29,7 @@ const AddTask = (props) => {
       name: taskName,
       date,
       priority,
-      active,
+      active: true,
       doneDate: "",
     };
     props.addTask(task);
@@ -38,20 +39,16 @@ const AddTask = (props) => {
     setPriority(false);
     setDate(currDate);
   };
-  let currDate = "";
 
-  // const getDate=()=> {
-  //   let currentDate = new Date().toISOString();
-  //   let time = currentDate.slice(0, 10);
-  //   currDate = time;
-  // }
-
-  // componentDidMount() {
-  //   this.getDate();
-  //   this.setState({
-  //     date: this.currDate,
-  //   });
-  // }
+  const getDate = () => {
+    let currentDate = new Date().toISOString();
+    let time = currentDate.slice(0, 10);
+    currDate = time;
+  };
+  useEffect(() => {
+    getDate();
+    setDate(currDate);
+  }, []);
 
   const alertName = !correct && !taskName && (
     <p>Wypełnij pole żeby dodać zadanie</p>
