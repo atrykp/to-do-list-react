@@ -14,7 +14,7 @@ const AddTask = (props) => {
     let name = e.target.name;
     let value = e.target.value;
     if (name === "taskName") setTaskName(value);
-    if (name === "priority") setPriority(priority);
+    if (name === "priority") setPriority((prevVal) => !prevVal);
     if (name === "date") setDate(value);
   };
 
