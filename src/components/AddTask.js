@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../style/AddTask.css";
 
 let currDate = "";
@@ -38,6 +38,7 @@ const AddTask = (props) => {
     setTaskName("");
     setPriority(false);
     setDate(currDate);
+    focusOnInput();
   };
 
   const getDate = () => {
@@ -45,9 +46,12 @@ const AddTask = (props) => {
     let time = currentDate.slice(0, 10);
     currDate = time;
   };
+  const nameInput = useRef();
+  const focusOnInput = () => nameInput.current.focus();
   useEffect(() => {
     getDate();
     setDate(currDate);
+    focusOnInput();
   }, []);
 
   const alertName = !correct && !taskName && (
@@ -63,6 +67,7 @@ const AddTask = (props) => {
         placeholder="dodaj zadanie"
         onChange={handleChange}
         value={taskName}
+        ref={nameInput}
       />
 
       <label htmlFor="priority">
