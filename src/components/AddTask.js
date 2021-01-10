@@ -9,7 +9,6 @@ class AddTask extends Component {
     priority: false,
     date: "",
     active: true,
-    doneDate: "",
   };
   handleChange = (e) => {
     let name = e.target.name;
@@ -31,7 +30,7 @@ class AddTask extends Component {
       date: currState.date,
       priority: currState.priority,
       active: currState.active,
-      doneDate: currState.doneDate,
+      doneDate: "",
     };
     this.props.addTask(task);
 
@@ -41,7 +40,6 @@ class AddTask extends Component {
       taskName: "",
       priority: false,
       date: this.currDate,
-      doneDate: "",
     });
   };
   getDate() {

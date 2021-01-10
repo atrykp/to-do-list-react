@@ -4,15 +4,18 @@ import AddTask from "./AddTask";
 import TasksList from "./TasksList";
 import "../style/App.css";
 
+const findIndex = (arr, number) => {
+  return arr.findIndex((elem) => number === elem.id);
+};
+const sortArr = (arr) => {
+  arr.sort((a, b) => new Date(b.date) - new Date(a.date)).reverse();
+};
+
 const App = () => {
   const [tasks, setTasks] = useState([]);
 
   const addTaskToArr = (task) => {
     setTasks(tasks.concat(task));
-  };
-
-  const findIndex = (arr, number) => {
-    return arr.findIndex((elem) => number === elem.id);
   };
 
   const removeTask = (number) => {
@@ -30,10 +33,6 @@ const App = () => {
     task.active = !task.active;
     task.doneDate = new Date().getTime();
     setTasks(toDoTasks);
-  };
-
-  const sortArr = (arr) => {
-    arr.sort((a, b) => new Date(b.date) - new Date(a.date)).reverse();
   };
 
   let doTasksArr = [...tasks];
