@@ -64,7 +64,7 @@ const AddTask = (props) => {
       <input
         type="text"
         name="taskName"
-        placeholder="dodaj zadanie"
+        placeholder="task name"
         onChange={handleChange}
         value={taskName}
         ref={nameInput}
@@ -78,17 +78,17 @@ const AddTask = (props) => {
           onChange={handleChange}
           checked={priority}
         />
-        oznacz jako priorytet
+        priority
       </label>
       {alertName}
 
       <br />
 
-      <span>Do kiedy zrobić</span>
+      <span>By when to complete the task</span>
       <input type="date" name="date" onChange={handleChange} value={date} />
       {alertDate}
       <br />
-      <button>Dodaj</button>
+      <button>Add task</button>
     </form>
   );
 };

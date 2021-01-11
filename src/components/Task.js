@@ -9,7 +9,7 @@ const Task = (props) => {
       <>
         <div className="task">
           <p className="doneTask">
-            <span>{name} </span> Zrobione: {time}
+            <span>{name} </span> Done: {time}
           </p>
           <button onClick={() => props.clickRemove(id)}>X</button>
         </div>
@@ -20,9 +20,9 @@ const Task = (props) => {
       <>
         <div className="task">
           <p className={priority ? "red" : ""}>
-            <span>{name}</span> zrobić do: {date}
+            <span>{name}</span> complete task to: {date}
           </p>
-          <button onClick={props.clickDone.bind(this, id)}>Zrobione</button>
+          <button onClick={props.clickDone.bind(this, id)}>Done</button>
           <button onClick={() => props.clickRemove(id)}>X</button>
         </div>
       </>

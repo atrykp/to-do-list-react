@@ -65,11 +65,11 @@ const App = () => {
           <ul className="clearfix">
             <li>
               <NavLink exact to="/">
-                Do zrobienia ({doTasksArr.length})
+                To do ({doTasksArr.length})
               </NavLink>
             </li>
             <li>
-              <NavLink to="/zrobione">Zrobione ({doneTasksArr.length})</NavLink>
+              <NavLink to="/done">Done ({doneTasksArr.length})</NavLink>
             </li>
           </ul>
         </nav>
@@ -77,7 +77,7 @@ const App = () => {
         <Route path="/" exact>
           {toDoTasks}
         </Route>
-        <Route path="/zrobione">{doneTasks}</Route>
+        <Route path="/done">{doneTasks}</Route>
       </div>
     </Router>
   );
