@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  NavLink,
+  Switch,
+} from "react-router-dom";
 import AddTask from "./AddTask";
 import TasksList from "./TasksList";
 import "../style/App.css";
+import ErrorPage from "./ErrorPage";
 
 const findIndex = (arr, number) => {
   return arr.findIndex((elem) => number === elem.id);
@@ -74,10 +80,13 @@ const App = () => {
           </ul>
         </nav>
         <hr />
-        <Route path="/" exact>
-          {toDoTasks}
-        </Route>
-        <Route path="/done">{doneTasks}</Route>
+        <Switch>
+          <Route path="/" exact>
+            {toDoTasks}
+          </Route>
+          <Route path="/done">{doneTasks}</Route>
+          <Route component={ErrorPage} />
+        </Switch>
       </div>
     </Router>
   );
