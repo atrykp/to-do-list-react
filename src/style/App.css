@@ -81,3 +81,30 @@ nav ul li a {
 hr {
   margin: 0;
 }
+.errorPage p {
+  font-size: 4rem;
+  text-transform: uppercase;
+  font-family: arial;
+  color: rgba(121, 0, 0, 0.171);
+  font-weight: bold;
+  text-align: center;
+  padding-top: 2%;
+}
+.errorPage button {
+  display: block;
+
+  padding: 1% 3%;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  font-family: arial;
+  background-color: transparent;
+  border: 1px solid rgba(39, 39, 39, 0.63);
+  color: rgb(12, 12, 12);
+  margin: 3% 3% 0;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.errorPage button:hover {
+  background-color: rgb(240, 240, 240);
+}
