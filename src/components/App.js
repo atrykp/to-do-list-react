@@ -71,7 +71,9 @@ const App = () => {
   return (
     <Router>
       <div className="mainContainer">
+        <button className="resetStorageBtn">Clear All</button>
         <AddTask addTask={addTaskToArr} />
+
         <nav>
           <ul className="clearfix">
             <li>
@@ -84,6 +86,7 @@ const App = () => {
             </li>
           </ul>
         </nav>
+
         <hr />
         <Switch>
           <Route path="/" exact>
