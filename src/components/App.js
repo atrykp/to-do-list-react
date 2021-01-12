@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -18,7 +18,9 @@ const sortArr = (arr) => {
 };
 
 const App = () => {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(
+    JSON.parse(localStorage.getItem("tasksArr")) || []
+  );
 
   const addTaskToArr = (task) => {
     setTasks(tasks.concat(task));
@@ -40,6 +42,9 @@ const App = () => {
     task.doneDate = new Date().getTime();
     setTasks(toDoTasks);
   };
+  useEffect(() => {
+    localStorage.setItem("tasksArr", JSON.stringify(tasks));
+  }, [tasks]);
 
   let doTasksArr = [...tasks];
   doTasksArr = doTasksArr.filter((task) => task.active);
