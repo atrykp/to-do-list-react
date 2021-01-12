@@ -67,11 +67,17 @@ const App = () => {
     doneTasksArr.length === 0 ? null : (
       <TasksList doneArr={doneTasksArr} removeTask={removeTask} type={"done"} />
     );
+  const removeStorage = () => {
+    localStorage.removeItem("tasksArr");
+    setTasks([]);
+  };
 
   return (
     <Router>
       <div className="mainContainer">
-        <button className="resetStorageBtn">Clear All</button>
+        <button className="resetStorageBtn" onClick={removeStorage}>
+          Clear All
+        </button>
         <AddTask addTask={addTaskToArr} />
 
         <nav>
