@@ -1,9 +1,11 @@
 import React from "react";
 
-const DatePage = () => {
+const DatePage = (props) => {
+  console.log(props);
+
   return (
     <div>
-      <h1>13.01.2021</h1>
+      <h1>{props.match.params.date}</h1>
       to do list in this day
     </div>
   );

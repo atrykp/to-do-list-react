@@ -1,6 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const DateList = () => {
+const DateList = (props) => {
+  let sortedArr = props.tasks.sort(function (a, b) {
+    return new Date(b.date) - new Date(a.date);
+  });
+  let dates = sortedArr.map((task) => task.date);
+
   return (
     <div>
       <h1>List of days</h1>

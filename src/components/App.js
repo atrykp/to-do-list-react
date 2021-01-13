@@ -107,8 +107,8 @@ const App = () => {
           </Route>
           <Route path="/done">{doneTasks}</Route>
 
-          <Route path="/dateList">{<DateList />}</Route>
-          <Route path="/date/:date">{<DatePage />}</Route>
+          <Route path="/dateList">{<DateList tasks={doTasksArr} />}</Route>
+          <Route path="/date/:date" component={DatePage} />
 
           <Route component={ErrorPage} />
         </Switch>
