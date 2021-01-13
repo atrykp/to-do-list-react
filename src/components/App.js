@@ -108,7 +108,7 @@ const App = () => {
           <Route path="/done">{doneTasks}</Route>
 
           <Route path="/dateList">{<DateList />}</Route>
-          <Route path="/datePage/:">{<DatePage />}</Route>
+          <Route path="/date/:date">{<DatePage />}</Route>
 
           <Route component={ErrorPage} />
         </Switch>
