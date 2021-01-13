@@ -9,6 +9,7 @@ import AddTask from "./AddTask";
 import TasksList from "./TasksList";
 import "../style/App.css";
 import ErrorPage from "./ErrorPage";
+import DateList from "./DateList";
 import DatePage from "./DatePage";
 
 const findIndex = (arr, number) => {
@@ -89,7 +90,7 @@ const App = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink exact to="/date/:">
+              <NavLink exact to="/dateList">
                 Date ({doTasksArr.length})
               </NavLink>
             </li>
@@ -105,7 +106,9 @@ const App = () => {
             {toDoTasks}
           </Route>
           <Route path="/done">{doneTasks}</Route>
-          <Route path="/date/">{<DatePage />}</Route>
+
+          <Route path="/dateList">{<DateList />}</Route>
+          <Route path="/datePage/:">{<DatePage />}</Route>
 
           <Route component={ErrorPage} />
         </Switch>
