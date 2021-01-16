@@ -5,7 +5,7 @@ let currDate = "";
 
 const AddTask = (props) => {
   const [correct, setCorrect] = useState(true);
-  const [id, setId] = useState(0);
+  const [id, setId] = useState(props.lengthArr);
   const [taskName, setTaskName] = useState("");
   const [priority, setPriority] = useState(false);
   const [date, setDate] = useState("");
