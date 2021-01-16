@@ -80,7 +80,7 @@ const App = () => {
         <button className="resetStorageBtn" onClick={removeStorage}>
           Clear All
         </button>
-        <AddTask addTask={addTaskToArr} />
+        <AddTask addTask={addTaskToArr} lengthArr={tasks.length} />
 
         <nav>
           <ul className="clearfix">
@@ -91,6 +91,7 @@ const App = () => {
             </li>
             <li>
               <NavLink exact to="/dateList">
+                {/* number of diffrent days------------- */}
                 Date ({doTasksArr.length})
               </NavLink>
             </li>
