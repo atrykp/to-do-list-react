@@ -109,7 +109,17 @@ const App = () => {
           <Route path="/done">{doneTasks}</Route>
 
           <Route path="/dateList">{<DateList tasks={doTasksArr} />}</Route>
-          <Route path="/date/:date" component={DatePage} />
+          <Route
+            path="/date/:date"
+            render={(props) => (
+              <DatePage
+                {...props}
+                taskArr={toDoTasks}
+                removeTask={removeTask}
+                changeStatus={handleAddToDoneClick}
+              />
+            )}
+          />
 
           <Route component={ErrorPage} />
         </Switch>
