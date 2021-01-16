@@ -6,7 +6,6 @@ const DateList = (props) => {
     return new Date(a.date) - new Date(b.date);
   });
   let dateArrs = [];
-
   while (sortedArr.length > 0) {
     let currDate = sortedArr[0].date;
     let endIndex = sortedArr.filter((element) => element.date === currDate)
@@ -14,11 +13,18 @@ const DateList = (props) => {
     let dateArr = sortedArr.splice(0, endIndex);
     dateArrs.push(dateArr);
   }
+  const links = dateArrs.map((arr) => (
+    <li>
+      <Link key={arr[0].date} to={`/date/${arr[0].date}`}>
+        {arr[0].date}
+      </Link>
+    </li>
+  ));
 
   return (
     <div>
       <h1>List of days</h1>
-      <Link to="/date/1301">13.01.06</Link>
+      <ul>{links}</ul>
     </div>
   );
 };
