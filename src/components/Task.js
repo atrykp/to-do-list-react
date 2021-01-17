@@ -17,19 +17,16 @@ const Task = (props) => {
     let value = e.target.value;
     setDateInputValue(value);
   };
-  let editTxtInput = editActive && (
-    <input type="text" onChange={handleTxtChange} value={txtInputValue} />
-  );
-  let editDateInput = editActive && (
-    <input type="date" onChange={handleDateChange} value={dateInputValue} />
-  );
-  let buttons = editActive
-    ? [<button>save</button>, <button>Cancel</button>]
-    : [
-        <button onClick={props.clickDone.bind(this, id)}>Done</button>,
-        <button onClick={activeEditMode}>edit</button>,
-        <button onClick={() => props.clickRemove(id)}>X</button>,
-      ];
+  const handleCancel = () => {
+    setTxtInputValue("");
+    setDateInputValue(date);
+    setEditActive(false);
+  };
+  const handleSaveChanges = () => {
+    setEditActive(false);
+    saveChanges(txtInputValue, dateInputValue, id);
+  };
+
   if (props.done) {
     const time = new Date(doneDate).toLocaleString();
     return (
@@ -43,6 +40,22 @@ const Task = (props) => {
       </>
     );
   } else {
+    let editTxtInput = editActive && (
+      <input type="text" onChange={handleTxtChange} value={txtInputValue} />
+    );
+    let editDateInput = editActive && (
+      <input type="date" onChange={handleDateChange} value={dateInputValue} />
+    );
+    let buttons = editActive
+      ? [
+          <button onClick={handleSaveChanges}>save</button>,
+          <button onClick={handleCancel}>cancel</button>,
+        ]
+      : [
+          <button onClick={props.clickDone.bind(this, id)}>Done</button>,
+          <button onClick={activeEditMode}>edit</button>,
+          <button onClick={() => props.clickRemove(id)}>X</button>,
+        ];
     return (
       <>
         <div className="task">
