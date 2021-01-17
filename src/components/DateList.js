@@ -23,8 +23,8 @@ const DateList = (props) => {
 
   return (
     <div>
-      <h1>List of days</h1>
-      <ul>{links}</ul>
+      <h1 className="titleDateList">List of days</h1>
+      <ul className="dateList">{links}</ul>
     </div>
   );
 };

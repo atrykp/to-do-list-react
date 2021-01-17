@@ -54,9 +54,7 @@ const AddTask = (props) => {
     focusOnInput();
   }, []);
 
-  const alertName = !correct && !taskName && (
-    <p>Wypełnij pole żeby dodać zadanie</p>
-  );
+  const alertName = !correct && !taskName && <p>Fill in the field to add</p>;
   const alertDate = !correct && !date && <p>Podaj datę zadania</p>;
 
   return (

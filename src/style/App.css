@@ -81,6 +81,35 @@ nav ul li a {
 hr {
   margin: 0;
 }
+.dateList {
+  padding: 1% 0;
+  margin: 0 2%;
+  text-align: center;
+}
+.dateList li {
+  list-style: none;
+  margin: 1% 0;
+}
+.dateList li a {
+  display: inline-block;
+  width: 40%;
+  text-decoration: none;
+  color: black;
+  padding: 1% 2%;
+  border: 1px solid black;
+  text-align: center;
+  transition: 0.2s;
+}
+.dateList li a:hover {
+  background-color: rgb(77, 77, 77);
+  color: white;
+}
+.titleDateList {
+  margin: 1% 0 1% 1%;
+  width: 30%;
+  padding-bottom: 1%;
+  border-bottom: 1px solid rgb(179, 179, 179);
+}
 .errorPage p {
   font-size: 4rem;
   text-transform: uppercase;

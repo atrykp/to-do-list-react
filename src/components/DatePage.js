@@ -18,8 +18,10 @@ const DatePage = (props) => {
 
   return (
     <div>
-      <h1>{props.match.params.date}</h1>
-      {list}
+      <div className="datePage">
+        <h1>{props.match.params.date}</h1>
+        {list}
+      </div>
     </div>
   );
 };
