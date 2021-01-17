@@ -4,13 +4,25 @@ const Task = (props) => {
   const { name, id, doneDate, date, priority } = props.task;
   const [editActive, setEditActive] = useState(false);
   const [txtInputValue, setTxtInputValue] = useState("");
-  const [dateInputValue, setDateInputValue] = useState("");
+  const [dateInputValue, setDateInputValue] = useState(date);
 
   const activeEditMode = () => {
     setEditActive(true);
   };
-  let editTxtInput = editActive && <input type="text" />;
-  let editDateInput = editActive && <input type="date" />;
+  const handleTxtChange = (e) => {
+    let value = e.target.value;
+    setTxtInputValue(value);
+  };
+  const handleDateChange = (e) => {
+    let value = e.target.value;
+    setDateInputValue(value);
+  };
+  let editTxtInput = editActive && (
+    <input type="text" onChange={handleTxtChange} value={txtInputValue} />
+  );
+  let editDateInput = editActive && (
+    <input type="date" onChange={handleDateChange} value={dateInputValue} />
+  );
   let buttons = editActive
     ? [<button>save</button>, <button>Cancel</button>]
     : [
