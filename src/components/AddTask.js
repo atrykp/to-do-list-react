@@ -55,7 +55,7 @@ const AddTask = (props) => {
   }, []);
 
   const alertName = !correct && !taskName && <p>Fill in the field to add</p>;
-  const alertDate = !correct && !date && <p>Podaj datę zadania</p>;
+  const alertDate = !correct && !date && <p>Set the date</p>;
 
   return (
     <form className="addSection" action="" onSubmit={handleAddTask}>

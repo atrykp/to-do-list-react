@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, Route } from "react-router-dom";
 import Task from "./Task";
 
 const DatePage = (props) => {
@@ -19,7 +20,10 @@ const DatePage = (props) => {
   return (
     <div>
       <div className="datePage">
-        <h1>{props.match.params.date}</h1>
+        <h1>
+          {props.match.params.date}
+          <Link to="/dateList">back to date list</Link>
+        </h1>
         {list}
       </div>
     </div>
