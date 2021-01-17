@@ -105,10 +105,19 @@ hr {
   color: white;
 }
 .titleDateList {
+  color: rgb(77, 77, 77);
   margin: 1% 0 1% 1%;
   width: 30%;
   padding-bottom: 1%;
   border-bottom: 1px solid rgb(179, 179, 179);
+}
+.datePage h1 {
+  width: 30%;
+  color: rgb(77, 77, 77);
+  font-size: 1.5rem;
+  margin-left: 1%;
+  padding-bottom: 1%;
+  border-bottom: solid 1px rgb(77, 77, 77);
 }
 .errorPage p {
   font-size: 4rem;
