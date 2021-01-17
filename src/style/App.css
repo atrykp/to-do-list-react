@@ -50,10 +50,12 @@ nav ul li a {
   border-right: 1px solid lightgray;
   font-style: normal;
   display: inline-block;
-  width: 70%;
+  width: 73%;
   font-size: 30px;
-
-  margin-right: 3%;
+}
+.task p span input {
+  font-size: 1.2rem;
+  margin: 0 1%;
 }
 
 .task button {

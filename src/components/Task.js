@@ -3,6 +3,9 @@ import React, { useState } from "react";
 const Task = (props) => {
   const { name, id, doneDate, date, priority } = props.task;
   const [editActive, setEditActive] = useState(false);
+  const [txtInputValue, setTxtInputValue] = useState("");
+  const [dateInputValue, setDateInputValue] = useState("");
+
   const activeEditMode = () => {
     setEditActive(true);
   };
