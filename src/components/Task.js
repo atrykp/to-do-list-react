@@ -24,7 +24,7 @@ const Task = (props) => {
   };
   const handleSaveChanges = () => {
     setEditActive(false);
-    saveChanges(txtInputValue, dateInputValue, id);
+    props.saveChanges(txtInputValue, dateInputValue, id);
   };
 
   if (props.done) {

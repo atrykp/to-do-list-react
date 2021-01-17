@@ -1,7 +1,14 @@
 import Task from "./Task";
 import React from "react";
 
-const TaskList = ({ toDoArr, changeStatus, removeTask, doneArr, type }) => {
+const TaskList = ({
+  toDoArr,
+  changeStatus,
+  removeTask,
+  doneArr,
+  type,
+  saveChanges,
+}) => {
   if (type === "toDo") {
     const toDoTasks = toDoArr.map((task) => (
       <Task
@@ -9,6 +16,7 @@ const TaskList = ({ toDoArr, changeStatus, removeTask, doneArr, type }) => {
         key={task.id}
         clickDone={changeStatus}
         clickRemove={removeTask}
+        saveChanges={saveChanges}
         done={false}
       />
     ));

@@ -47,6 +47,14 @@ const App = () => {
   useEffect(() => {
     localStorage.setItem("tasksArr", JSON.stringify(tasks));
   }, [tasks]);
+  // -------------------------------------------------------------
+  const saveChanges = (name, date, id) => {
+    let editArr = [...tasks];
+    const index = editArr.findIndex((elem) => elem.id === id);
+    editArr[index].name = name;
+    editArr[index].date = date;
+    setTasks(editArr);
+  };
 
   let doTasksArr = [...tasks];
   doTasksArr = doTasksArr.filter((task) => task.active);
@@ -62,6 +70,7 @@ const App = () => {
         toDoArr={doTasksArr}
         changeStatus={handleAddToDoneClick}
         removeTask={removeTask}
+        saveChanges={saveChanges}
         type={"toDo"}
       />
     );
@@ -115,6 +124,7 @@ const App = () => {
               <DatePage
                 {...props}
                 taskArr={toDoTasks}
+                saveChanges={saveChanges}
                 removeTask={removeTask}
                 changeStatus={handleAddToDoneClick}
               />

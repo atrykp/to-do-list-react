@@ -4,7 +4,6 @@ import Task from "./Task";
 
 const DatePage = (props) => {
   let tasksArr = props.taskArr.props.toDoArr;
-  console.log(props.removeTask);
 
   tasksArr = tasksArr.filter((elem) => elem.date === props.match.params.date);
   const list = tasksArr.map((elem) => (
@@ -13,6 +12,7 @@ const DatePage = (props) => {
       key={elem.id}
       clickDone={props.changeStatus}
       clickRemove={props.removeTask}
+      saveChanges={props.saveChanges}
       done={false}
     />
   ));
