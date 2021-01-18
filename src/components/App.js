@@ -48,11 +48,13 @@ const App = () => {
     localStorage.setItem("tasksArr", JSON.stringify(tasks));
   }, [tasks]);
   // -------------------------------------------------------------
-  const saveChanges = (name, date, id) => {
+  const saveChanges = (name, date, priority, id) => {
     let editArr = [...tasks];
     const index = editArr.findIndex((elem) => elem.id === id);
-    editArr[index].name = name;
-    editArr[index].date = date;
+    const element = editArr[index];
+    if (name) element.name = name;
+    element.date = date;
+    element.priority = priority;
     setTasks(editArr);
   };
 
