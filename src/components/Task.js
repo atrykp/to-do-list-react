@@ -65,20 +65,25 @@ const Task = (props) => {
     );
     let buttons = editActive
       ? [
-          <button onClick={handleSaveChanges}>save</button>,
-          <button onClick={handleCancel}>cancel</button>,
+          <div className="buttons">
+            <button onClick={handleSaveChanges}>save</button>
+            <button onClick={handleCancel}>cancel</button>
+          </div>,
         ]
       : [
-          <button onClick={props.clickDone.bind(this, id)}>Done</button>,
-          <button onClick={activeEditMode}>edit</button>,
-          <button onClick={() => props.clickRemove(id)}>X</button>,
+          <div className="buttons">
+            <button onClick={props.clickDone.bind(this, id)}>Done</button>
+            <button onClick={activeEditMode}>edit</button>
+            <button onClick={() => props.clickRemove(id)}>X</button>
+          </div>,
         ];
     return (
       <>
-        <div className="task">
-          <p className={priority ? "red" : ""}>
-            <span>{name}</span> complete task to: {date}
+        <div className="task clearfix">
+          <p>
+            complete task to: <span className="taskDate">{date}</span>
           </p>
+          <p className={priority ? "red taskName" : "taskName"}>{name}</p>
           {buttons}
           {editTxtInput}
           {editDateInput}
