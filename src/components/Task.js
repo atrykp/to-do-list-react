@@ -22,10 +22,14 @@ const Task = (props) => {
     setTxtInputValue("");
     setDateInputValue(date);
     setEditActive(false);
+    setCheckInputValue(priority);
   };
   const handleSaveChanges = () => {
     setEditActive(false);
-    props.saveChanges(txtInputValue, dateInputValue, id);
+    props.saveChanges(txtInputValue, dateInputValue, checkInputValue, id);
+  };
+  const handleChangePrority = () => {
+    setCheckInputValue((prevValue) => !prevValue);
   };
 
   if (props.done) {
@@ -53,7 +57,8 @@ const Task = (props) => {
           name="priority"
           type="checkbox"
           id="priority"
-          checked={priority}
+          onChange={handleChangePrority}
+          checked={checkInputValue}
         />
         priority
       </label>
