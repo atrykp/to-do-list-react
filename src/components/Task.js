@@ -5,6 +5,7 @@ const Task = (props) => {
   const [editActive, setEditActive] = useState(false);
   const [txtInputValue, setTxtInputValue] = useState("");
   const [dateInputValue, setDateInputValue] = useState(date);
+  const [checkInputValue, setCheckInputValue] = useState(priority);
 
   const activeEditMode = () => {
     setEditActive(true);
@@ -46,6 +47,17 @@ const Task = (props) => {
     let editDateInput = editActive && (
       <input type="date" onChange={handleDateChange} value={dateInputValue} />
     );
+    let editPrority = editActive && (
+      <label htmlFor="priority">
+        <input
+          name="priority"
+          type="checkbox"
+          id="priority"
+          checked={priority}
+        />
+        priority
+      </label>
+    );
     let buttons = editActive
       ? [
           <button onClick={handleSaveChanges}>save</button>,
@@ -60,15 +72,12 @@ const Task = (props) => {
       <>
         <div className="task">
           <p className={priority ? "red" : ""}>
-            <span>
-              {name}
-              {editTxtInput}
-              {editDateInput}
-            </span>{" "}
-            complete task to: {date}
+            <span>{name}</span> complete task to: {date}
           </p>
-
           {buttons}
+          {editTxtInput}
+          {editDateInput}
+          {editPrority}
         </div>
       </>
     );
