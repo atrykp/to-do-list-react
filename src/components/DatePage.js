@@ -10,7 +10,7 @@ const DatePage = (props) => {
   const list = tasksArr.map((elem) => (
     <Task
       task={elem}
-      key={elem.id}
+      key={elem.id + Math.floor(Math.random() * 745392)}
       clickDone={props.changeStatus}
       clickRemove={props.removeTask}
       saveChanges={props.saveChanges}

@@ -25,7 +25,12 @@ const TaskList = ({
 
   if (type === "done") {
     const doneTasks = doneArr.map((task) => (
-      <Task task={task} key={task.id} clickRemove={removeTask} done={true} />
+      <Task
+        task={task}
+        key={task.id + 345}
+        clickRemove={removeTask}
+        done={true}
+      />
     ));
     return doneTasks;
   }

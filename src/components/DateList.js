@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 const DateList = (props) => {
   let sortedArr = [...props.tasks];
+
   sortedArr.sort(function (a, b) {
     return new Date(a.date) - new Date(b.date);
   });
@@ -14,9 +15,9 @@ const DateList = (props) => {
     let dateArr = sortedArr.splice(0, endIndex);
     dateArrs.push(dateArr);
   }
-  const links = dateArrs.map((arr) => (
+  let links = dateArrs.map((arr) => (
     <li>
-      <Link key={Math.floor(Math.random() * 123)} to={`/date/${arr[0].date}`}>
+      <Link key={Math.floor(Math.random() * 1237)} to={`/date/${arr[0].date}`}>
         {arr[0].date} ({arr.length})
       </Link>
     </li>
@@ -25,7 +26,7 @@ const DateList = (props) => {
   return (
     <div>
       <h1 className="titleDateList">List of days</h1>
-      <ul className="dateList">{links}</ul>
+      <ul className="dateList">{dateArrs ? links : null}</ul>
     </div>
   );
 };

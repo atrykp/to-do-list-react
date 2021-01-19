@@ -102,8 +102,7 @@ const App = () => {
             </li>
             <li>
               <NavLink exact to="/dateList">
-                {/* number of diffrent days------------- */}
-                Date
+                Date list
               </NavLink>
             </li>
             <li>

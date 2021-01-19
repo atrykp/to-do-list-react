@@ -2,3 +2,5 @@
 [1231/055533.066:ERROR:directory_reader_win.cc(43)] FindFirstFile: System nie mo?e odnale?? okre?lonej ?cie?ki. (0x3)
 [1231/165342.067:ERROR:directory_reader_win.cc(43)] FindFirstFile: System nie mo?e odnale?? okre?lonej ?cie?ki. (0x3)
 [0109/054416.203:ERROR:directory_reader_win.cc(43)] FindFirstFile: System nie mo?e odnale?? okre?lonej ?cie?ki. (0x3)
+[0119/054544.796:ERROR:directory_reader_win.cc(43)] FindFirstFile: System nie mo?e odnale?? okre?lonej ?cie?ki. (0x3)
+[0119/054544.804:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\plazi\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\e0b48579-09c5-47d4-bb85-93cd130a01bb: System nie mo?e odnale?? okre?lonej ?cie?ki. (0x3)
