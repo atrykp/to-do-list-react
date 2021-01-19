@@ -6,6 +6,7 @@ const DatePage = (props) => {
   let tasksArr = props.taskArr.props.toDoArr;
 
   tasksArr = tasksArr.filter((elem) => elem.date === props.match.params.date);
+
   const list = tasksArr.map((elem) => (
     <Task
       task={elem}
