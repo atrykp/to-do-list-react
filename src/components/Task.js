@@ -36,11 +36,14 @@ const Task = (props) => {
     const time = new Date(doneDate).toLocaleString();
     return (
       <>
-        <div className="task">
-          <p className="doneTask">
-            <span>{name} </span> Done: {time}
+        <div className="task clearfix">
+          <p>
+            Done: <span className="taskDate">{time}</span>
           </p>
-          <button onClick={() => props.clickRemove(id)}>X</button>
+          <p className="doneTask">{name}</p>
+          <div className="buttons">
+            <button onClick={() => props.clickRemove(id)}>X</button>
+          </div>
         </div>
       </>
     );
