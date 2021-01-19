@@ -1,6 +1,6 @@
 .addSection {
   box-sizing: border-box;
-  height: 35vh;
+  min-height: 35vh;
   padding: 2% 1%;
   text-align: center;
   font-family: arial;
@@ -9,6 +9,12 @@
   font-size: 20px;
   padding: 5px 20px;
   margin: 10px;
+}
+.addSection .taskNameInput {
+  display: block;
+  margin: 3% auto 1%;
+  padding: 1%;
+  width: 70%;
 }
 
 .addSection button {
@@ -26,10 +32,22 @@
   font-size: 10px;
   color: red;
   margin: 0;
-  margin-right: 250px;
 }
 .addSection button:hover {
   background-color: black;
   border: 1.5px solid white;
   color: white;
+}
+@media (max-width: 580px) {
+  .addSection {
+    margin-bottom: 10%;
+  }
+  .addSection label {
+    display: block;
+    width: 100%;
+  }
+  .addSection .taskNameInput {
+    margin: 10% auto 1%;
+    font-size: 2rem;
+  }
 }

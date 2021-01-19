@@ -19,11 +19,12 @@ const DatePage = (props) => {
 
   return (
     <div>
-      <div className="datePage">
-        <h1>
-          {props.match.params.date}
+      <div className="datePage ">
+        <div className="titleDataPage clearfix">
           <Link to="/dateList">back to date list</Link>
-        </h1>
+          <h1>{props.match.params.date}</h1>
+        </div>
+
         {list}
       </div>
     </div>

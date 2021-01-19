@@ -54,12 +54,13 @@ const AddTask = (props) => {
     focusOnInput();
   }, []);
 
-  const alertName = !correct && !taskName && <p>Fill in the field to add</p>;
+  const alertName = !correct && !taskName && <p>Enter the name of the task</p>;
   const alertDate = !correct && !date && <p>Set the date</p>;
 
   return (
     <form className="addSection" action="" onSubmit={handleAddTask}>
       <input
+        className="taskNameInput"
         type="text"
         name="taskName"
         placeholder="task name"
@@ -67,6 +68,7 @@ const AddTask = (props) => {
         value={taskName}
         ref={nameInput}
       />
+      {alertName}
 
       <label htmlFor="priority">
         <input
@@ -78,7 +80,6 @@ const AddTask = (props) => {
         />
         priority
       </label>
-      {alertName}
 
       <br />
 
