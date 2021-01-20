@@ -49,22 +49,34 @@ const Task = (props) => {
     );
   } else {
     let editTxtInput = editActive && (
-      <input type="text" onChange={handleTxtChange} value={txtInputValue} />
+      <input
+        className="editInput"
+        type="text"
+        onChange={handleTxtChange}
+        value={txtInputValue}
+      />
     );
     let editDateInput = editActive && (
-      <input type="date" onChange={handleDateChange} value={dateInputValue} />
+      <input
+        className="editInput"
+        type="date"
+        onChange={handleDateChange}
+        value={dateInputValue}
+      />
     );
     let editPrority = editActive && (
-      <label htmlFor="priority">
-        <input
-          name="priority"
-          type="checkbox"
-          id="priority"
-          onChange={handleChangePrority}
-          checked={checkInputValue}
-        />
-        priority
-      </label>
+      <div className="editPrority">
+        <label htmlFor="">
+          <input
+            name="priority"
+            type="checkbox"
+            id="priorityEdit"
+            onChange={handleChangePrority}
+            checked={checkInputValue}
+          />
+          priority
+        </label>
+      </div>
     );
     let buttons = editActive
       ? [
