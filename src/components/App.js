@@ -82,23 +82,24 @@ const App = () => {
     doneTasksArr.length === 0 ? null : (
       <TasksList doneArr={doneTasksArr} removeTask={removeTask} type={"done"} />
     );
-
-  const removePopup = popup && (
-    <div className="removePopup"> are you sure?</div>
-  );
   const removeStorage = () => {
-    let removeAll = false;
-    setPopup(true);
-
     localStorage.removeItem("tasksArr");
     setTasks([]);
+    setPopup(false);
   };
+  const removePopup = popup && (
+    <div className="removePopup">
+      <p className="rmvPopupTxt">Are you sure? All tasks will be deleted</p>
+      <button onClick={removeStorage}>Yes</button>
+      <button onClick={() => setPopup(false)}>No</button>
+    </div>
+  );
 
   return (
     <Router>
       <div className="mainContainer">
         {removePopup}
-        <button className="resetStorageBtn" onClick={removeStorage}>
+        <button className="resetStorageBtn" onClick={() => setPopup(true)}>
           Clear All
         </button>
         <AddTask addTask={addTaskToArr} />
