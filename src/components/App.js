@@ -4,6 +4,7 @@ import {
   Route,
   NavLink,
   Switch,
+  Prompt,
 } from "react-router-dom";
 import AddTask from "./AddTask";
 import TasksList from "./TasksList";
@@ -23,6 +24,7 @@ const App = () => {
   const [tasks, setTasks] = useState(
     JSON.parse(localStorage.getItem("tasksArr")) || []
   );
+  const [popup, setPopup] = useState(false);
 
   const addTaskToArr = (task) => {
     setTasks(tasks.concat(task));
@@ -80,7 +82,14 @@ const App = () => {
     doneTasksArr.length === 0 ? null : (
       <TasksList doneArr={doneTasksArr} removeTask={removeTask} type={"done"} />
     );
+
+  const removePopup = popup && (
+    <div className="removePopup"> are you sure?</div>
+  );
   const removeStorage = () => {
+    let removeAll = false;
+    setPopup(true);
+
     localStorage.removeItem("tasksArr");
     setTasks([]);
   };
@@ -88,6 +97,7 @@ const App = () => {
   return (
     <Router>
       <div className="mainContainer">
+        {removePopup}
         <button className="resetStorageBtn" onClick={removeStorage}>
           Clear All
         </button>

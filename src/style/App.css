@@ -258,3 +258,11 @@ input:focus {
     margin-bottom: 5%;
   }
 }
+.removePopup {
+  width: 50vw;
+  height: 30vh;
+  background-color: darkgrey;
+  position: absolute;
+  top: calc(50% - 15vh);
+  left: calc(50% - 25vw);
+}
