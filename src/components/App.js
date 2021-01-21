@@ -4,7 +4,6 @@ import {
   Route,
   NavLink,
   Switch,
-  Prompt,
 } from "react-router-dom";
 import AddTask from "./AddTask";
 import TasksList from "./TasksList";
@@ -90,8 +89,10 @@ const App = () => {
   const removePopup = popup && (
     <div className="removePopup">
       <p className="rmvPopupTxt">Are you sure? All tasks will be deleted</p>
-      <button onClick={removeStorage}>Yes</button>
-      <button onClick={() => setPopup(false)}>No</button>
+      <div className="rmvPopupBtns">
+        <button onClick={removeStorage}>Yes</button>
+        <button onClick={() => setPopup(false)}>No</button>
+      </div>
     </div>
   );
 
