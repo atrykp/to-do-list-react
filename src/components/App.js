@@ -98,8 +98,8 @@ const App = () => {
 
   return (
     <Router>
-      <div className="mainContainer">
-        {removePopup}
+      {removePopup}
+      <div className={popup ? "mainContainer blur" : "mainContainer"}>
         <button className="resetStorageBtn" onClick={() => setPopup(true)}>
           Clear All
         </button>

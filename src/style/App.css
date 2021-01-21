@@ -215,9 +215,15 @@ hr {
 input:focus {
   border: 2px solid royalblue;
 }
+.blur {
+  filter: blur(4px);
+}
 .removePopup {
+  z-index: 2;
   width: 50vw;
   height: 30vh;
+  max-width: 600px;
+  max-height: 200px;
   background-color: rgb(22, 22, 22);
   position: absolute;
   top: calc(50% - 15vh);
@@ -250,8 +256,12 @@ input:focus {
   border-color: black;
   background-color: #fff;
 }
-.blur {
-  filter: blur(1);
+@media (max-width: 1500px) {
+  .rmvPopupTxt {
+    margin-top: 2%;
+    color: white;
+    font-size: 1.5rem;
+  }
 }
 @media (max-width: 580px) {
   .buttons {
