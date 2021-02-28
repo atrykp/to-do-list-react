@@ -3,6 +3,15 @@ import { Link } from "react-router-dom";
 import Task from "./Task";
 
 const DatePage = (props) => {
+  if (!props.taskArr) {
+    return (
+      <>
+        <h2>There is nothing here</h2>
+        <Link to="/">back to the home page</Link>
+      </>
+    );
+  }
+
   let tasksArr = props.taskArr.props.toDoArr;
 
   tasksArr = tasksArr.filter((elem) => elem.date === props.match.params.date);
